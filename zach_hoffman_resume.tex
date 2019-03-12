@@ -30,17 +30,13 @@
 
 \def \phonelinkfile{phonelink.tex}
 
+% unlike the address, the external file needs to be a functional TeX \href, because
+% \href{\input{file}}{link text} exceeds TeX resource capacity
 \newcommand{\phonelink}{
-    \IfFileExists{
-        \phonelinkfile
-    }{
-        % unlike the address, the external file needs to be a functional TeX \href, because
-        % \href{\input{file}}{link text} exceeds TeX resource capacity
-        \input{\phonelinkfile}
-    }{
-        \href{tel:+1-123-456-7890}{123-456-7890}
-    }
-}
+	\IfFileExists{
+		\phonelinkfile
+	}{\input{\phonelinkfile}}{
+		\href{tel:+1-123-456-7890}{123-456-7890}}}
 
 \newcommand{\phone}{\InputFileElse{phone.txt}{123-456-7890}}
 
