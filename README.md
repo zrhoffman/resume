@@ -9,3 +9,7 @@ use a real address and phone number, copy `addressline1.txt.dist` to
 `addressline1.txt`, `addressline2.txt.dist` to `addressline2.txt`, and
 `phonelink.tex.dist` to `phonelink.tex`, then add the desired values to
 those files.
+
+## Preview
+
+![Resume preview](/resume_preview.png)
