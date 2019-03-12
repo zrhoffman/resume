@@ -1,0 +1,169 @@
+% Zach Hoffman's resume
+
+\documentclass[letterpaper, 11pt]{article}
+
+\usepackage[T1]{fontenc} % use different font families
+\usepackage[empty]{fullpage} % decrease margins
+\usepackage[hidelinks]{hyperref}
+\usepackage{tabularx} % for X table columns
+\usepackage{tocloft} % dotted lines
+\usepackage[letterspace=-35]{microtype} % to disable ligatures everywhere and move characters closer together sometimes (tracking)
+\usepackage{graphicx} % to scale characters (\scalebox)
+\usepackage{enumitem} % to unindent lists
+
+\setlist[itemize]{leftmargin=*, itemsep=-1mm} % unindent lists, condense them, too
+
+\DisableLigatures{encoding = *, family = * }
+
+\addtolength{\oddsidemargin}{-0.5in} % remove 0.5 inches of margin on the left side
+\addtolength{\textwidth}{1.0in} % remove 1 inch of margin on the right side by rendering past the edge of the page
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\newcommand{\superbold}[1]{{\fontseries{b}\selectfont#1}}
+
+\newcommand{\expanded}[1]{{\fontseries{m}\selectfont#1}}
+
+\newcommand{\mostlybold}[1]{{\fontseries{bx}\selectfont#1}}
+
+\newcommand{\InputFileElse}[2]{\IfFileExists{#1}{\input{#1}}{#2}}
+
+\def \phonelinkfile{phonelink.tex}
+
+\newcommand{\phonelink}{
+    \IfFileExists{
+        \phonelinkfile
+    }{
+        % unlike the address, the external file needs to be a functional TeX \href, because
+        % \href{\input{file}}{link text} exceeds TeX resource capacity
+        \input{\phonelinkfile}
+    }{
+        \href{tel:+1-123-456-7890}{123-456-7890}
+    }
+}
+
+\newcommand{\phone}{\InputFileElse{phone.txt}{123-456-7890}}
+
+\newcommand{\addresslineone}{\InputFileElse{addressline1.txt}{111 Main St}}
+\newcommand{\addresslinetwo}{\InputFileElse{addressline2.txt}{City, ST 12345}}
+
+\newcommand{\resumetitle}[1]{
+    \flushleft\textbf{#1}
+}
+
+\newcommand{\dotnormalline}[2]{#1\dotfill#2}
+
+\newcommand{\dottitle}[2]{\flushleft\normalsize\superbold{#1\dotfill#2}}
+
+\newcommand{\jobStart}[2]{
+    \dottitle{#1}{#2}\vspace{-0.05cm}
+    \begin{itemize}
+}
+
+\newcommand{\jobEnd}{
+    \end{itemize}\vspace{0.05cm}
+}
+\def \yesyeah{wtf}
+\begin{document}
+\setlength{\parskip}{-0.5em}
+% \renewcommand{\baselinestretch}{1} stretch all lines by a factor (do not use)
+
+\centerline{
+    \superbold{
+        \huge{
+            \scalebox{1.1}[1]{Zachary R. Hoffman}
+        }
+    }
+}
+
+\large{
+    \setlength\arrayrulewidth{2pt} % cell border
+    \begin{center}
+        \begin{tabularx}{\textwidth}{ X@{\hspace{-0.1739in}}l@{\hspace{15pt}}|@{\hspace{15pt}}rX }
+            & \addresslineone & \href{mailto:zach@zrhoffman.net}{zach@zrhoffman.net} & \\
+            & \addresslinetwo & \phonelink & \\
+            \hline
+        \end{tabularx}
+    \end{center}
+}
+
+\vspace{0pt}
+
+\begin{center}
+    \expanded{
+        \huge{
+                \scalebox{1.029}[.98]{Experience}
+        }
+    }
+\end{center}
+
+\vspace{-3pt}
+
+\jobStart{Full-Stack Developer for University of Kansas IT Enterprise Development Services}{12/2014-Present}
+    \normalsize\item Principal maintainer for KU's central content management system, which includes over 1,100 Drupal 7 sites
+    \item Developed student application system for KU School of Education system using the Laravel framework
+    \item Developed calendar web app in Symfony 4, including a REST API for other sites to use
+    \item Automated several everyday processes, such as filling out common ServiceNow tickets programmatically via the ServiceNow API (client written in Python), cloning Drupal sites to a local development environment (written in Golang), and U2F 2-factor authentication (browser extension)
+\jobEnd
+
+\jobStart{Web Developer for University of Kansas Marketing Communications}{06/2014-12/2014}
+    \item Built, themed, wrote modules for, and maintained dozens of Drupal sites
+    \item Maintained digital asset management system (ResourceSpace)
+    \item Developed site frontends from mockups
+\jobEnd
+
+\jobStart{Software Engineer Intern at IBM Informix}{06/2012-08/2012}
+    \item Constructed new demo for Informix Warehouse Accelerator
+    \item Demo used ODBC to connect to Informix IDS with IWA, running BI queries on TPC-DS tables
+    \item Wrote documentation for usage of demo
+\jobEnd
+
+\jobStart{Security Researcher for Mozilla Corporation}{09/2010-04/2011}
+    \item Identified one critical (\href{https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-0051}{CVE-2011-0051}, \href{https://www.mozilla.org/en-US/security/advisories/mfsa2011-02}{Mozilla bug 616659}), and one high-risk vulnerability (\href{https://bugzilla.mozilla.org/show_bug.cgi?id=635776}{bug 635776})
+    \item Constructed JavaScript exploit test cases for both vulnerabilities on various Firefox builds
+    \item Held a presentation at Lawrence University: “Talk on Browser Security”
+\jobEnd
+
+\jobStart{Computer Science Lab Tutor at Lawrence University}{09/2011-06/2013}
+    \item Supported students taking courses in C, Java, and C++
+    \item Walked students through resolving code issues
+    \item Answered technical development questions from students
+\jobEnd
+
+\jobStart{Independent Studies}{09/2011-06/2013}
+    \item Developed Max/MSP lexer in JavaScript to play waveform music from MIDI data
+    \item Wrote Z80 core and TI-83+ LCD emulator in Objective-C for iOS
+    \item Wrote file transfer software implementing D-BUS protocol between PC audio port and calculator I/O port
+\jobEnd
+
+\hrule\vspace{0.3cm}
+
+{
+    \dottitle{Education: Lawrence University}{2013}\vspace{-0.05cm}
+    \setlist[itemize]{leftmargin=0pt,itemsep=-1mm}
+    \begin{itemize}[label={}]
+        \item Bachelor of Arts in Computer Science-Mathematics
+        \item Bachelor of Arts in Music
+    \end{itemize}
+}
+
+\hrule\vspace{0.3cm}
+
+{
+    \resumetitle{Familiar Technologies}\vspace{-0.05cm}
+    \setlist[itemize]{leftmargin=0pt,itemsep=-1mm}
+    \begin{itemize}[label={}]
+        \item PHP, Java, PHPUnit, Drupal, Laravel, Magento, Symfony, Twig, JavaScript, ES6, Node.js, Vue.js, jQuery, Golang, Rust, Python, ANSI C, C++, Objective-C, C\#, ASP.NET, Scheme, Tcl, Docker, Ansible, Lua, Doctrine, MySQL, Oracle, PostgreSQL, Git, Mercurial, Bash, Vimscript
+    \end{itemize}
+}
+
+\hrule\vspace{0.3cm}
+
+\resumetitle{Other Information}
+\begin{itemize}
+    \item See my FOSS work at \scalebox{1.05}[1.05]{\large{\href{https://github.com/zrhoffman}{\textsf{github.com/zrhoffman}}}}\small
+    \item \dotnormalline{President of Lawrence University Computer Science Club}{01/2011-06/2013}
+    \item \dotnormalline{Participant in ACM International Collegiate Programming Competition}{2010, 2011, 2012, 2013}
+\end{itemize}
+
+\end{document}
