@@ -28,7 +28,7 @@
 
 \newcommand{\InputFileElse}[2]{\IfFileExists{#1}{\input{#1}}{#2}}
 
-\def \phonelinkfile{phonelink.tex}
+\newcommand{\phonelinkfile}{phonelink.tex}
 
 % unlike the address, the external file needs to be a functional TeX \href, because
 % \href{\input{file}}{link text} exceeds TeX resource capacity
@@ -59,7 +59,7 @@
 \newcommand{\jobEnd}{
     \end{itemize}\vspace{0.05cm}
 }
-\def \yesyeah{wtf}
+
 \begin{document}
 \setlength{\parskip}{-0.5em}
 % \renewcommand{\baselinestretch}{1} stretch all lines by a factor (do not use)
